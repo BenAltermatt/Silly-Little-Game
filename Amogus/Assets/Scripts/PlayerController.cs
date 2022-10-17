@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
 
+    [SerializeField]
+    private SoundController audioSrc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if(grounded && Input.GetAxisRaw("Jump") > 0){
             yVec = jumpStr;
+            audioSrc.Play("Jump");
         }
 
         rb.velocity = new Vector2(xVec, yVec);
